@@ -20,6 +20,7 @@ użycie:
 		this.write('hello');  //standardowe metody
 		this.end();
 	});
+```
 
 ### extend.cookie (name,options)
 * **name** - identyfikator szablonu
@@ -59,7 +60,7 @@ użycie:
 * **msg** - opcjonalny tekst
 
 > w przypadku błędu headers są kasowane o ile nie zostały wysłane,
-> a funcja sprawdza czy istnieje extend.paths ('/error/404)
+> a funcja sprawdza czy istnieje extend.paths ('/error/404). Innaczej zostaje wysłana wiadomość tekstowa z domyślnym lub wskazanych w argumenicie, argument jest również przekazywany jako jedyny do extend.paths()
 
 ### response.cache (fun,pub)
 * **fun** - identyfikator, jeżeli typu Date określa wartość nagłówka 'Last-Modified' innaczej 'ETag'
