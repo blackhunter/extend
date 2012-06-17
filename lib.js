@@ -1,6 +1,6 @@
 // static cache
 
-var paths = exports.paths = {},
+var paths = {},
 	url = require('url'),
 	mime = {
 		html: 'text/html',
@@ -72,14 +72,18 @@ var paths = exports.paths = {},
 	}
 
 exports.listener = function(req,res){
-	req.res = res;
+	res.req = reg;
+	//req.res = res;
 
 	var href = url.parse(req.url,(req.method!=='POST'));
 
 	if(!paths[href.pathname])
 		res.error(404);
 	else
-		paths[href.pathname].call(res,req,href);
+		paths[href.pathname].call(res,href);
+}
+exports.paths = function(name,fuu){
+	paths[name] = fuu;
 }
 
 /**===cookie backend===*/
@@ -227,8 +231,8 @@ exports.extend = function(http){
 
 		cookies.push(schema[0]+value+schema[1]+schema[2]);
 	};
-	http.IncomingMessage.prototype.getC = function(name){
-		var cookie = this.headers.cookie,
+	http.ServerResponse.prototype.getC = function(name){
+		var cookie = this.req.headers.cookie,
 			ret = {secure:false,out:{}};
 		if(!cookie)
 			return ret;
@@ -238,7 +242,7 @@ exports.extend = function(http){
 			cookie.match(req).reduce(select,ret);
 
 		if(ret.secure)
-			this.res.secure = ret.secure;
+			this.secure = ret.secure;
 
 		return ret.out;
 	};
@@ -320,14 +324,14 @@ exports.extend = function(http){
 			return ~etag.match(ntag);
 		};
 
-	http.IncomingMessage.prototype.cache = function(fuu,pub){
-		var res = this.res
+	http.ServerResponse.prototype.cache = function(fuu,pub){
+		var res = this;
 
 		if(!fuu){
 			res.setHeader('Cache-Control','no-cache');
 			res.setHeader('Pragma','no-cache');
 		}else{
-			if((this.header['if-modified-since'] && mod(this.header['if-modified-since'],fuu)) || (this.header['if-none-match'] && match(this.header['etag'],fuu))){
+			if((this.req.header['if-modified-since'] && mod(this.req.header['if-modified-since'],fuu)) || (this.req.header['if-none-match'] && match(this.req.header['etag'],fuu))){
 				res.writeHead(304);
 				res.end();
 				return true;
