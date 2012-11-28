@@ -2,7 +2,7 @@
 	"name": "extend",
 	"description": "Easy web server mask",
 	"author": "Wszerad Martynowski <wszerad91@gmail.com>",
-	"version" : "0.1.0",
+	"version" : "0.1.1",
 	"dependencies": {
 		"blackhunter_node-formidable" : "https://github.com/blackhunter/node-formidable/archive/master.tar.gz"
 	},
