@@ -1,20 +1,19 @@
 {
-	"name": "extend",
-	"description": "Easy web server mask",
-	"author": "Wszerad Martynowski <wszerad91@gmail.com>",
-	"version" : "0.1.1",
-	"directories": {
-		"lib": "./lib"
-	},
-	"main": "./lib/index",
-	"repository":{
-		"type":"git",
-		"url":"https://github.com/blackhunter/extend.git"
-	},
-	"dependencies": {
-		"blackhunter_node-formidable" : "https://github.com/blackhunter/node-formidable/archive/master.tar.gz"
-	},
-	"engines": {
-		"node": ">= 0.8.1"
-	}
+  "name": "extend",
+  "version": "1.1.1",
+  "description": "Basic webserv mask",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blackhunter/extend.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "Wszerad Martynowski",
+  "email": "wszerad91@gmail.com",
+  "license": "BSD"
 }
