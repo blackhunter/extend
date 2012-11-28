@@ -2,6 +2,7 @@
 
 var paths = {},
 	url = require('url'),
+	formidable = require('formidable'),
 	mime = {
 		html: 'text/html',
 		txt: 'text/plain',
@@ -72,16 +73,24 @@ var paths = {},
 	}
 
 exports.listener = function(req,res){
-	res.req = reg;
-	//req.res = res;
-
-	var href = url.parse(req.url,(req.method!=='POST'));
+	res.req = req;
+	var post = (req.method=='POST'),
+		href = url.parse(req.url,!post),
+		data;
 
 	if(!paths[href.pathname])
 		res.error(404);
-	else
-		paths[href.pathname].call(res,href);
+
+	if(post){
+		data = new formidable.IncomingForm();
+		data.parse(req);
+	}else{
+		data = href.query;
+	}
+
+	paths[href.pathname].call(res,data,res);
 }
+
 exports.paths = function(name,fuu){
 	paths[name] = fuu;
 }
