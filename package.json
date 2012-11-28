@@ -1,5 +1,5 @@
 {
-  "name": "extend",
+  "name": "wszerad_extend",
   "version": "1.1.1",
   "description": "Basic webserv mask",
   "main": "./lib/index.js",
