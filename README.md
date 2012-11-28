@@ -15,8 +15,10 @@
 
 użycie:
 ``` js
-	extend.paths('/',function( url ){
-		console.log(url);    //--> href, protocol, ...
+	extend.paths('/',function( data,  response){
+		console.log(data);    //--> url.query(dla GET) lub form ( object , node-formidable patrz: node-formidable https://github.com/blackhunter/node-formidable)
+		// this.res == response
+		// this.res.req == request
 		this.write('hello');  //standardowe metody
 		this.end();
 	});
