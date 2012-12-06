@@ -1,19 +1,22 @@
 {
-  "name": "wszerad_extend",
-  "version": "1.1.5",
-  "description": "Basic webserv mask",
-  "main": "./lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/blackhunter/extend.git"
-  },
-  "keywords": [
-    "node.js"
-  ],
-  "author": "Wszerad Martynowski",
-  "email": "wszerad91@gmail.com",
-  "license": "BSD"
+	"name": "wszerad_extend",
+	"version": "1.1.5",
+	"description": "Basic webserv mask",
+	"main": "./lib/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/blackhunter/extend.git"
+	},
+	"keywords": [
+		"node.js"
+	],
+	"dependencies": {
+		"formidable": "https://github.com/blackhunter/node-formidable/tarball/master"
+	},
+	"author": "Wszerad Martynowski",
+	"email": "wszerad91@gmail.com",
+	"license": "BSD"
 }
